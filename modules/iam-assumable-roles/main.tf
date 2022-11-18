@@ -182,10 +182,12 @@ data "aws_iam_policy_document" "assume_role_with_mfa" {
       values   = [var.mfa_age]
     }
 
+    # ref: https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition_operators.html
+    # ref: https://www.netskope.com/blog/aws-improve-cloudtrail-logging-for-assumedrole-actions
     condition {
       test     = "StringLike"
       variable = "sts:RoleSessionName"
-      values   = var.admin_role_requires_mfa_session_to_match_username ? ["${aws.username}"] : ["*"]
+      values   = var.admin_role_requires_mfa_session_to_match_username ? ["$\{aws.username}"] : ["*"]
     }
   }
 }
