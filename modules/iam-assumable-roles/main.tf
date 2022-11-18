@@ -187,7 +187,8 @@ data "aws_iam_policy_document" "assume_role_with_mfa" {
     condition {
       test     = "StringLike"
       variable = "sts:RoleSessionName"
-      values   = var.admin_role_requires_mfa_session_to_match_username ? ["$${aws.username}"] : ["*"]
+      # values   = var.admin_role_requires_mfa_session_to_match_username ? ["$${aws.username}"] : ["*"]
+      values   = var.admin_role_requires_mfa_session_to_match_username ? ["RaySmets"] : ["*"]
     }
   }
 }
