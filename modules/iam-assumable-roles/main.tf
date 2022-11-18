@@ -181,6 +181,12 @@ data "aws_iam_policy_document" "assume_role_with_mfa" {
       variable = "aws:MultiFactorAuthAge"
       values   = [var.mfa_age]
     }
+
+    condition {
+      test     = "StringLike"
+      variable = "sts:RoleSessionName"
+      values   = var.admin_role_requires_mfa_session_to_match_username ? ["${aws.username}"] : ["*"]
+    }
   }
 }
 

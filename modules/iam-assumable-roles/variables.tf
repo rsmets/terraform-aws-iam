@@ -59,6 +59,12 @@ variable "admin_role_permissions_boundary_arn" {
   default     = ""
 }
 
+variable "admin_role_requires_mfa_session_to_match_username" {
+  description = "Whether the MFA session role name must match the username assuming the role"
+  type        = bool
+  default     = false
+}
+
 variable "admin_role_tags" {
   description = "A map of tags to add to admin role resource."
   type        = map(string)
