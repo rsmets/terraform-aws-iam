@@ -184,6 +184,7 @@ data "aws_iam_policy_document" "assume_role_with_mfa" {
 
     # ref: https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition_operators.html
     # ref: https://www.netskope.com/blog/aws-improve-cloudtrail-logging-for-assumedrole-actions
+    # ref: https://aws.amazon.com/blogs/security/easily-control-naming-individual-iam-role-sessions/
     condition {
       test     = "StringLike"
       variable = "sts:RoleSessionName"
